@@ -9,15 +9,15 @@ ENTITY control IS
     );
 END control;
 
-ARCHITECTURE control_arch IS
-    TYPE states_type IS (START, SETUP, PLAY_FPGA, PLAY_USER, CHECK, NEXT_ROUND, RESULT)
-    SIGNAL state : states_type
+ARCHITECTURE control_arch OF control IS
+    TYPE states_type IS (START, SETUP, PLAY_FPGA, PLAY_USER, CHECK, NEXT_ROUND, RESULT);
+    SIGNAL state : states_type;
 BEGIN
     PROCESS (clk, rst)
     BEGIN
         IF (rst = '1') THEN
             state <= START;
-        ELSIF rising_edge(clock) THEN
+        ELSIF rising_edge(clk) THEN
             CASE state IS
                 WHEN START =>
                     state <= SETUP;
@@ -54,10 +54,14 @@ BEGIN
     R2 <= '1' WHEN state = START ELSE
         '0';
 
-    E1 <= '0';
-    E2 <= '0';
-    E3 <= '0';
-    E4 <= '0';
+    E1 <= '1' WHEN state = SETUP ELSE
+        '0';
+    E2 <= '1' WHEN state = PLAY_USER ELSE
+        '0';
+    E3 <= '1' WHEN state = PLAY_FPGA ELSE
+        '0';
+    E4 <= '1' WHEN state = NEXT_ROUND ELSE
+        '0';
 
     SEL <= '1' WHEN state = RESULT ELSE
         '0';

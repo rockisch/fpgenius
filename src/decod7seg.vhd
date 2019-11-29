@@ -9,7 +9,7 @@ ENTITY decod7seg IS
     );
 END decod7seg;
 
-ARCHITECTURE decod7seg_arch IS
+ARCHITECTURE decod7seg_arch OF decod7seg IS
 BEGIN
     output <= "1000000" WHEN data = "0000" ELSE
         "1111001" WHEN data = "0001" ELSE

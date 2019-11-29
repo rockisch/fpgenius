@@ -29,20 +29,20 @@ BEGIN
             count := count + 1;
 
             IF count REM count_05Hz = 0 THEN
-                clk_05Hz_s := NOT clk_05Hz_s;
-                clk_1Hz_s := NOT clk_1Hz_s;
-                clk_2Hz_s := NOT clk_1Hz_s;
-                clk_3Hz_s := NOT clk_3Hz_s;
+                clk_05Hz_s <= NOT clk_05Hz_s;
+                clk_1Hz_s <= NOT clk_1Hz_s;
+                clk_2Hz_s <= NOT clk_1Hz_s;
+                clk_3Hz_s <= NOT clk_3Hz_s;
                 count := 0;
             ELSIF count REM count_1Hz = 0 THEN
-                clk_1Hz_s := NOT clk_1Hz_s;
-                clk_2Hz_s := NOT clk_1Hz_s;
-                clk_3Hz_s := NOT clk_3Hz_s;
+                clk_1Hz_s <= NOT clk_1Hz_s;
+                clk_2Hz_s <= NOT clk_1Hz_s;
+                clk_3Hz_s <= NOT clk_3Hz_s;
             ELSIF count REM count_2Hz = 0 THEN
-                clk_2Hz_s := NOT clk_2Hz_s;
-                clk_3Hz_s := NOT clk_3Hz_s;
+                clk_2Hz_s <= NOT clk_2Hz_s;
+                clk_3Hz_s <= NOT clk_3Hz_s;
             ELSIF count REM count_3Hz = 0 THEN
-                clk_3Hz_s := NOT clk_3Hz_s;
+                clk_3Hz_s <= NOT clk_3Hz_s;
             END IF;
         END IF;
     END PROCESS;

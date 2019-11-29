@@ -8,12 +8,12 @@ ENTITY reg IS
     );
     PORT (
         reset, enter, clk : IN std_logic;
-        data : IN std_logic_vector(data_width);
-        output : OUT std_logic_vector(data_width)
+        data : IN std_logic_vector(data_width-1 downto 0);
+        output : OUT std_logic_vector(data_width-1 downto 0)
     );
 END reg;
 
-ARCHITECTURE reg_arch IS
+ARCHITECTURE reg_arch OF reg IS
 BEGIN
     PROCESS (clk, enter, reset)
     BEGIN
