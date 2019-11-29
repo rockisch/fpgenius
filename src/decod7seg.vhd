@@ -5,13 +5,13 @@ USE IEEE.std_logic_1164.ALL;
 ENTITY decod7seg IS
     PORT (
         data : IN std_logic_vector(3 DOWNTO 0);
-        output : OUT std_logic_vector(6 DOWNTO 0)
+        data_out : OUT std_logic_vector(6 DOWNTO 0)
     );
 END decod7seg;
 
 ARCHITECTURE decod7seg_arch OF decod7seg IS
 BEGIN
-    output <= "1000000" WHEN data = "0000" ELSE
+    data_out <= "1000000" WHEN data = "0000" ELSE
         "1111001" WHEN data = "0001" ELSE
         "0100100" WHEN data = "0010" ELSE
         "0110000" WHEN data = "0011" ELSE

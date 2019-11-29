@@ -4,13 +4,13 @@ USE IEEE.std_logic_1164.ALL;
 ENTITY SEQ1 IS
 	PORT (
 		address : IN std_logic_vector(3 DOWNTO 0);
-		output : OUT std_logic_vector(3 DOWNTO 0)
+		data_out : OUT std_logic_vector(3 DOWNTO 0)
 	);
 END SEQ1;
 
 ARCHITECTURE arc OF SEQ1 IS
 BEGIN
-	output <= "0001" WHEN address = "0000" ELSE
+	data_out <= "0001" WHEN address = "0000" ELSE
 		"0100" WHEN address = "0001" ELSE
 		"0010" WHEN address = "0010" ELSE
 		"1000" WHEN address = "0011" ELSE

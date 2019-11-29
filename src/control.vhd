@@ -26,6 +26,10 @@ BEGIN
                         state <= PLAY_FPGA;
                     END IF;
                 WHEN PLAY_FPGA =>
+                    IF end_fpga = '1' THEN
+                        state <= PLAY_USER;
+                    END IF;
+                WHEN PLAY_USER =>
                     IF end_time = '1' THEN
                         state <= RESULT;
                     ELSIF end_user = '1' THEN
@@ -43,6 +47,8 @@ BEGIN
                     ELSE
                         state <= PLAY_FPGA;
                     END IF;
+                WHEN RESULT =>
+                    state <= RESULT;
                 WHEN OTHERS =>
                     state <= START;
             END CASE;
@@ -51,7 +57,7 @@ BEGIN
 
     R1 <= '1' WHEN state = START ELSE
         '0';
-    R2 <= '1' WHEN state = START ELSE
+    R2 <= '1' WHEN state = START OR state = NEXT_ROUND ELSE
         '0';
 
     E1 <= '1' WHEN state = SETUP ELSE

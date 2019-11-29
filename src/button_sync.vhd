@@ -4,7 +4,7 @@ USE IEEE.std_logic_1164.ALL;
 
 ENTITY button_sync IS
 	PORT (
-		KEY0, KEY1, KEY2, KEY3, CLK : IN std_logic;
+		KEY0, KEY1, KEY2, KEY3, clk : IN std_logic;
 		BTN0, BTN1, BTN2, BTN3 : OUT std_logic
 	);
 END button_sync;
@@ -16,7 +16,7 @@ ARCHITECTURE button_sync_arch OF button_sync IS
 BEGIN
 	PROCESS (clk)
 	BEGIN
-		IF clk'event AND clk = '1' THEN -- Resposta na transicao positiva do clock
+		IF rising_edge(clk) THEN -- Resposta na transicao positiva do clock
 			btn0state <= btn0next;
 			btn1state <= btn1next;
 			btn2state <= btn2next;
@@ -48,6 +48,7 @@ BEGIN
 					btn0next <= EsperaApertar;
 				END IF;
 				btn0 <= '1';
+			WHEN OTHERS =>
 		END CASE;
 	END PROCESS;
 
@@ -75,6 +76,7 @@ BEGIN
 					btn1next <= EsperaApertar;
 				END IF;
 				btn1 <= '1';
+			WHEN OTHERS =>
 		END CASE;
 	END PROCESS;
 
@@ -102,6 +104,7 @@ BEGIN
 					btn2next <= EsperaApertar;
 				END IF;
 				btn2 <= '1';
+			WHEN OTHERS =>
 		END CASE;
 	END PROCESS;
 
@@ -129,6 +132,7 @@ BEGIN
 					btn3next <= EsperaApertar;
 				END IF;
 				btn3 <= '1';
+			WHEN OTHERS =>
 		END CASE;
 	END PROCESS;
 END button_sync_arch;
