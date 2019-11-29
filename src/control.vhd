@@ -66,7 +66,7 @@ BEGIN
         '0';
     E3 <= '1' WHEN state = PLAY_FPGA ELSE
         '0';
-    E4 <= '1' WHEN state = NEXT_ROUND ELSE
+    E4 <= '1' WHEN state = NEXT_ROUND AND win = '0' ELSE
         '0';
 
     SEL <= '1' WHEN state = RESULT ELSE

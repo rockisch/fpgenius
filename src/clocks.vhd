@@ -29,29 +29,28 @@ BEGIN
             count_2Hz <= count_2Hz + 1;
             count_3Hz <= count_3Hz + 1;
 
-            IF count_05Hz = 8 THEN
+            IF count_05Hz = 50000000 THEN
                 count_05Hz <= 0;
                 clk_05Hz <= '1';
             ELSE
                 clk_05Hz <= '0';
             END IF;
 
-            IF count_1Hz = 6 THEN
+            IF count_1Hz = 25000000 THEN
                 count_1Hz <= 0;
                 clk_1Hz <= '1';
             ELSE
                 clk_1Hz <= '0';
             END IF;
 
-            IF count_2Hz = 4 THEN
+            IF count_2Hz = 12500000 THEN
                 count_2Hz <= 0;
                 clk_2Hz <= '1';
             ELSE
                 clk_2Hz <= '0';
             END IF;
 
-            -- IF count_3Hz = 6250000 THEN
-            IF count_3Hz = 2 THEN
+            IF count_3Hz = 6250000 THEN
                 count_3Hz <= 0;
                 clk_3Hz <= '1';
             ELSE
